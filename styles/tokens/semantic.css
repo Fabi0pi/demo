@@ -1,0 +1,67 @@
+/*
+ * Tier 2: purpose-named tokens. `:root` is the light theme; the dark theme
+ * re-points the same names, following the system preference.
+ */
+:root {
+  color-scheme: light;
+  --background: var(--frost-50);
+  --surface: var(--frost-0);
+  --surface-hover: var(--frost-100);
+  --sidebar: var(--frost-100);
+  --foreground: var(--ink-850);
+  --muted-foreground: var(--ink-600);
+  --border: var(--frost-300);
+  --border-strong: var(--ink-500);
+
+  --accent: var(--violet-700);
+  --accent-foreground: var(--frost-0);
+  --accent-subtle: var(--violet-50);
+  --highlight: var(--electric-600);
+  --ring: var(--accent);
+
+  --status-ready: var(--green-700);
+  --status-ready-foreground: var(--frost-0);
+  --status-review: var(--amber-700);
+  --status-review-foreground: var(--graphite-950);
+  --danger: var(--red-700);
+
+  --elevation-overlay:
+    0 1px 2px oklch(0.22 0.009 260 / 0.06),
+    0 8px 24px -8px oklch(0.22 0.009 260 / 0.18);
+
+  --duration-fast: 150ms;
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --background: var(--graphite-950);
+    --surface: var(--graphite-900);
+    --surface-hover: var(--graphite-800);
+    --sidebar: var(--graphite-900);
+    --foreground: var(--ink-100);
+    --muted-foreground: var(--ink-300);
+    --border: var(--graphite-700);
+    --border-strong: var(--graphite-500);
+
+    --accent: var(--violet-300);
+    --accent-foreground: var(--graphite-950);
+    --accent-subtle: var(--violet-900);
+    --highlight: var(--electric-300);
+
+    --status-ready: var(--green-300);
+    --status-ready-foreground: var(--graphite-950);
+    --status-review: var(--amber-400);
+    --danger: var(--red-300);
+
+    --elevation-overlay:
+      0 1px 2px oklch(0 0 0 / 0.5),
+      0 8px 24px -8px oklch(0 0 0 / 0.6);
+  }
+}
+
+/* Reduced motion: transitions collapse to an instant (1ms keeps transitionend firing). */
+@media (prefers-reduced-motion: reduce) {
+  :root { --duration-fast: 1ms; }
+}

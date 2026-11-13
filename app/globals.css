@@ -1,26 +1,71 @@
 @import "tailwindcss";
+@import "../styles/tokens/primitives.css";
+@import "../styles/tokens/semantic.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* `inline` makes utilities emit var(--token), so the theme switch needs no rebuild. */
 @theme inline {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-sidebar: var(--sidebar);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-highlight: var(--highlight);
+  --color-ring: var(--ring);
+  --color-status-ready: var(--status-ready);
+  --color-status-ready-foreground: var(--status-ready-foreground);
+  --color-status-review: var(--status-review);
+  --color-status-review-foreground: var(--status-review-foreground);
+  --color-danger: var(--danger);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --radius-*: initial;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  --shadow-overlay: var(--elevation-overlay);
+  --ease-out: var(--ease-out);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* One visible focus treatment everywhere, never removed without a replacement. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  /*
+   * Tailwind's reset gives buttons the default arrow. Everything clickable
+   * shows a pointer; anything disabled shows that it is not available.
+   */
+  :is(button, summary, select, [role="button"], [role="menuitem"]):not(:disabled, [aria-disabled="true"]) {
+    cursor: pointer;
+  }
+  :is(:disabled, [aria-disabled="true"]) {
+    cursor: not-allowed;
+  }
+
+  /* Headings focused programmatically after navigation are targets, not controls. */
+  [data-focus-target]:focus {
+    outline: none;
+  }
 }

@@ -1,0 +1,37 @@
+/*
+ * Tier 1: raw palette, literal oklch only. Referenced exclusively from
+ * semantic.css; components never use these names directly.
+ */
+:root {
+  --frost-0: oklch(0.988 0.003 260);
+  --frost-50: oklch(0.982 0.006 260);
+  --frost-100: oklch(0.963 0.009 260);
+  --frost-300: oklch(0.86 0.018 260);
+
+  --graphite-950: oklch(0.18 0.006 280);
+  --graphite-900: oklch(0.225 0.008 280);
+  --graphite-800: oklch(0.275 0.01 280);
+  --graphite-700: oklch(0.35 0.012 280);
+  --graphite-500: oklch(0.62 0.012 280);
+
+  --ink-850: oklch(0.22 0.009 260);
+  --ink-600: oklch(0.5 0.013 260);
+  --ink-500: oklch(0.62 0.01 260);
+  --ink-300: oklch(0.74 0.014 260);
+  --ink-100: oklch(0.94 0.004 260);
+
+  --violet-900: oklch(0.27 0.055 295);
+  --violet-700: oklch(0.5 0.2 295);
+  --violet-300: oklch(0.68 0.18 295);
+  --violet-50: oklch(0.95 0.025 295);
+
+  --electric-600: oklch(0.55 0.15 260);
+  --electric-300: oklch(0.72 0.14 250);
+
+  --green-700: oklch(0.5 0.12 150);
+  --green-300: oklch(0.8 0.1 150);
+  --amber-700: oklch(0.6 0.12 70);
+  --amber-400: oklch(0.78 0.16 70);
+  --red-700: oklch(0.48 0.15 25);
+  --red-300: oklch(0.81 0.1 25);
+}
