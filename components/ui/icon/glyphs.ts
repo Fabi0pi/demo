@@ -1,4 +1,3 @@
-/** SVG path data for every icon, on a 24×24 grid with round 2px strokes. */
 export const GLYPHS = {
   overview: "M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z",
   tasks: "m3 6 2 2 3-4M11 6h10M3 13h4M11 13h10M3 20h4M11 20h10",

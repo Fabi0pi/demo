@@ -5,7 +5,6 @@ import type { GlyphName } from "./glyphs";
 
 type IconProps = Omit<ComponentProps<"svg">, "children"> & { name: GlyphName };
 
-/** Decorative stroke icon; its colour follows the surrounding text. Name the control, not the icon. */
 export function Icon({ name, className, ...props }: IconProps) {
   return (
     <svg

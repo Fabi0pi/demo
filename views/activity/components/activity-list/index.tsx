@@ -2,7 +2,6 @@ import { Icon } from "@/components/ui/icon";
 import type { ActivityEntry } from "@/lib/tasks/desk-state";
 import { describeEntry } from "../../utils/describe-entry";
 
-/** Newest first: an ordered list, because the order is the information. */
 export function ActivityList({ entries }: { entries: readonly ActivityEntry[] }) {
   return (
     <ol className="grid gap-2">

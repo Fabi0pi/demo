@@ -7,7 +7,15 @@ const TONES: Readonly<Record<TaskStatus, string>> = {
   ready: "bg-status-ready text-status-ready-foreground",
 };
 
-/** The status as text in a coloured pill: the colour repeats the word, never replaces it. */
 export function StatusBadge({ status }: { status: TaskStatus }) {
-  return <span className={cn("rounded-full px-2.5 py-1 font-mono text-xs font-bold whitespace-nowrap", TONES[status])}>{STATUS_LABELS[status]}</span>;
+  return (
+    <span
+      className={cn(
+        "rounded-full px-2.5 py-1 font-mono text-xs font-bold whitespace-nowrap",
+        TONES[status],
+      )}
+    >
+      {STATUS_LABELS[status]}
+    </span>
+  );
 }

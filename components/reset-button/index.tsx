@@ -10,14 +10,16 @@ const LABEL = "Reset workspace";
 const RESTORED = "Sample tasks restored";
 
 type ResetButtonProps = {
-  /** `rail`: icon with a tooltip, label from lg (sidebar). `full`: always labelled. */
   layout?: "rail" | "full";
   className?: string;
   onReset?: () => void;
 };
 
-/** Restores the sample tasks; disabled until something has changed. */
-export function ResetButton({ layout = "full", className, onReset }: ResetButtonProps) {
+export function ResetButton({
+  layout = "full",
+  className,
+  onReset,
+}: ResetButtonProps) {
   const { hasChanges, restore, showNotice } = useDesk();
   const isRail = layout === "rail";
 
@@ -28,11 +30,27 @@ export function ResetButton({ layout = "full", className, onReset }: ResetButton
   }
 
   const button = (labelledBy?: string): ReactNode => (
-    <button type="button" disabled={!hasChanges} aria-labelledby={labelledBy} onClick={handleReset} className={cn("flex min-h-11 w-full items-center gap-3 rounded-sm px-3 text-sm text-muted-foreground hover:enabled:bg-surface-hover hover:enabled:text-foreground disabled:opacity-50", isRail && "justify-center px-0 lg:justify-start lg:px-3", className)}>
+    <button
+      type="button"
+      disabled={!hasChanges}
+      aria-labelledby={labelledBy}
+      onClick={handleReset}
+      className={cn(
+        "flex min-h-11 w-full items-center gap-3 rounded-sm px-3 text-sm text-muted-foreground hover:enabled:bg-surface-hover hover:enabled:text-foreground disabled:opacity-50",
+        isRail && "justify-center px-0 lg:justify-start lg:px-3",
+        className,
+      )}
+    >
       <Icon name="reset" />
       <span className={cn(isRail && "sr-only lg:not-sr-only")}>{LABEL}</span>
     </button>
   );
 
-  return isRail ? <Tooltip label={LABEL} className="lg:hidden">{button}</Tooltip> : button();
+  return isRail ? (
+    <Tooltip label={LABEL} className="lg:hidden">
+      {button}
+    </Tooltip>
+  ) : (
+    button()
+  );
 }

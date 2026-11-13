@@ -8,7 +8,6 @@ import { cn } from "@/lib/cn";
 import { NAV_ITEMS } from "./nav-items";
 
 type MainNavProps = {
-  /** `rail`: icons with tooltips, labels from lg. `list`: always labelled (mobile menu). */
   layout: "rail" | "list";
   onNavigate?: () => void;
 };

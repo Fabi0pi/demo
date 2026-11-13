@@ -5,7 +5,6 @@ import { ResetButton } from "@/components/reset-button";
 
 type MobileMenuProps = { id: string; isOpen: boolean; onClose: () => void };
 
-/** The phone navigation: a panel under the top bar, opened by the menu button. */
 export function MobileMenu({ id, isOpen, onClose }: MobileMenuProps) {
   return (
     <div id={id} hidden={!isOpen} className="absolute inset-x-0 top-full z-30 border-b border-border-strong bg-surface p-3 shadow-overlay md:hidden">
