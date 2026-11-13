@@ -1,5 +1,5 @@
 {
-  "name": "release-desk",
+  "name": "demo",
   "private": true,
   "scripts": {
     "dev": "next dev",
