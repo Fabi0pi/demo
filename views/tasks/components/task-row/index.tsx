@@ -1,8 +1,9 @@
 import type { Task } from "@/lib/tasks/task";
+import type { TaskActions } from "../../types";
 import { StatusBadge } from "../status-badge";
 import { TaskActionsMenu } from "../task-actions-menu";
 
-type TaskRowProps = { task: Task; onToggleStatus: () => void; onDelete: () => void };
+type TaskRowProps = TaskActions & { task: Task };
 
 export function TaskRow({ task, onToggleStatus, onDelete }: TaskRowProps) {
   return (
