@@ -3,11 +3,9 @@
 import type { ReactNode } from "react";
 import { Icon } from "@/components/ui/icon";
 import { Tooltip } from "@/components/ui/tooltip";
-import { useDesk } from "@/hooks/useDesk";
 import { cn } from "@/lib/cn";
-
-const LABEL = "Reset workspace";
-const RESTORED = "Sample tasks restored";
+import { RESET_LABEL } from "./constants";
+import { useResetButton } from "./hooks/useResetButton";
 
 type ResetButtonProps = {
   layout?: "rail" | "full";
@@ -15,24 +13,14 @@ type ResetButtonProps = {
   onReset?: () => void;
 };
 
-export function ResetButton({
-  layout = "full",
-  className,
-  onReset,
-}: ResetButtonProps) {
-  const { hasChanges, restore, showNotice } = useDesk();
+export function ResetButton({ layout = "full", className, onReset }: ResetButtonProps) {
+  const { isDisabled, handleReset } = useResetButton(onReset);
   const isRail = layout === "rail";
-
-  function handleReset() {
-    restore();
-    showNotice(RESTORED);
-    onReset?.();
-  }
 
   const button = (labelledBy?: string): ReactNode => (
     <button
       type="button"
-      disabled={!hasChanges}
+      disabled={isDisabled}
       aria-labelledby={labelledBy}
       onClick={handleReset}
       className={cn(
@@ -42,12 +30,12 @@ export function ResetButton({
       )}
     >
       <Icon name="reset" />
-      <span className={cn(isRail && "sr-only lg:not-sr-only")}>{LABEL}</span>
+      <span className={cn(isRail && "sr-only lg:not-sr-only")}>{RESET_LABEL}</span>
     </button>
   );
 
   return isRail ? (
-    <Tooltip label={LABEL} className="lg:hidden">
+    <Tooltip label={RESET_LABEL} className="lg:hidden">
       {button}
     </Tooltip>
   ) : (

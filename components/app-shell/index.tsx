@@ -6,9 +6,8 @@ import { NoticeBanner } from "@/components/notice-banner";
 import { Sidebar } from "@/components/sidebar";
 import { Topbar } from "@/components/topbar";
 import { NewTaskDialog } from "@/views/tasks";
+import { MOBILE_MENU_ID } from "./constants";
 import { useAppShell } from "./hooks/useAppShell";
-
-const MOBILE_MENU_ID = "mobile-navigation";
 
 export function AppShell({ children }: { children: ReactNode }) {
   const {

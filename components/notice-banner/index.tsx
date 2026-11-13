@@ -3,9 +3,11 @@
 import { Icon } from "@/components/ui/icon";
 import { useDesk } from "@/hooks/useDesk";
 import { cn } from "@/lib/cn";
+import { NOTICE_TONES } from "./constants";
 
 export function NoticeBanner() {
   const { notice, dismissNotice } = useDesk();
+  const tone = notice ? NOTICE_TONES[notice.tone] : null;
 
   return (
     <div
@@ -14,19 +16,14 @@ export function NoticeBanner() {
       aria-atomic="true"
       className="pointer-events-none fixed inset-x-4 top-20 z-40 flex justify-center"
     >
-      {notice && (
+      {notice && tone && (
         <p
           className={cn(
             "pointer-events-auto flex max-w-sm items-center gap-3 rounded-sm border bg-surface py-2 pr-1 pl-3 text-sm shadow-overlay",
-            notice.tone === "danger" ? "border-danger" : "border-status-ready",
+            tone.border,
           )}
         >
-          <Icon
-            name={notice.tone === "danger" ? "trash" : "check"}
-            className={
-              notice.tone === "danger" ? "text-danger" : "text-status-ready"
-            }
-          />
+          <Icon name={tone.icon} className={tone.text} />
           <span className="flex-1">{notice.text}</span>
           <button
             type="button"

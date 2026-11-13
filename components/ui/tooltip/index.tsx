@@ -1,8 +1,8 @@
 "use client";
 
-import { useId, useState } from "react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { useTooltip } from "./hooks/useTooltip";
 
 type TooltipProps = {
   label: string;
@@ -11,15 +11,14 @@ type TooltipProps = {
 };
 
 export function Tooltip({ label, className, children }: TooltipProps) {
-  const id = useId();
-  const [isDismissed, setIsDismissed] = useState(false);
+  const { id, isDismissed, handleKeyDown, handlePointerEnter, handleFocus } = useTooltip();
 
   return (
     <span
       className="group/tooltip relative flex"
-      onKeyDown={(event) => event.key === "Escape" && setIsDismissed(true)}
-      onPointerEnter={() => setIsDismissed(false)}
-      onFocus={() => setIsDismissed(false)}
+      onKeyDown={handleKeyDown}
+      onPointerEnter={handlePointerEnter}
+      onFocus={handleFocus}
     >
       {children(id)}
       <span

@@ -6,6 +6,7 @@ import { useDesk } from "@/hooks/useDesk";
 import { useDismiss } from "@/hooks/useDismiss";
 import type { NewTask } from "@/lib/tasks/task";
 
+/** The shell's behaviour: the phone menu, the new-task dialog and what happens after a task is created. */
 export function useAppShell() {
   const router = useRouter();
   const { createTask, showNotice } = useDesk();

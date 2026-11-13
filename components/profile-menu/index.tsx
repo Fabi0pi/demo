@@ -1,15 +1,13 @@
 "use client";
 
-import { useRef, useState } from "react";
 import { ResetButton } from "@/components/reset-button";
-import { useDismiss } from "@/hooks/useDismiss";
+import { UserAvatar } from "@/components/user-avatar";
+import { UserDetails } from "@/components/user-details";
+import { PROFILE_BUTTON_LABEL, PROFILE_PANEL_ID } from "./constants";
+import { useProfileMenu } from "./hooks/useProfileMenu";
 
 export function ProfileMenu() {
-  const [isOpen, setIsOpen] = useState(false);
-  const rootRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const close = () => setIsOpen(false);
-  useDismiss(isOpen, close, [rootRef]);
+  const { isOpen, rootRef, buttonRef, toggle, handleReset } = useProfileMenu();
 
   return (
     <div ref={rootRef} className="relative hidden md:block">
@@ -17,29 +15,20 @@ export function ProfileMenu() {
         ref={buttonRef}
         type="button"
         aria-expanded={isOpen}
-        aria-controls="profile-panel"
-        aria-label="FA, demo profile"
-        onClick={() => setIsOpen(!isOpen)}
-        className="grid size-11 place-items-center rounded-full border border-accent/45 bg-accent-subtle font-mono text-xs font-bold text-accent"
+        aria-controls={PROFILE_PANEL_ID}
+        aria-label={PROFILE_BUTTON_LABEL}
+        onClick={toggle}
+        className="rounded-full"
       >
-        <span aria-hidden="true">FA</span>
+        <UserAvatar className="size-11" />
       </button>
       <div
-        id="profile-panel"
+        id={PROFILE_PANEL_ID}
         hidden={!isOpen}
-        className="absolute top-full right-0 z-30 mt-2 w-60 rounded-sm border border-border-strong bg-surface p-4 shadow-overlay"
+        className="absolute top-full right-0 z-30 mt-2 grid w-60 gap-3 rounded-sm border border-border-strong bg-surface p-4 shadow-overlay"
       >
-        <p className="font-semibold">Fabio</p>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Frontend developer · Demo
-        </p>
-        <ResetButton
-          className="mt-3 -ml-3"
-          onReset={() => {
-            close();
-            buttonRef.current?.focus();
-          }}
-        />
+        <UserDetails />
+        <ResetButton className="-ml-3" onReset={handleReset} />
       </div>
     </div>
   );
