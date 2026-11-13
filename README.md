@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Release Desk
 
-## Getting Started
+Release Desk is the live demonstration on my personal site,
+[fabiopiras.dev](https://fabiopiras.dev). It is a small release dashboard:
+a team's tasks, how close the release is to shipping, and a history of every
+change. You can search and filter tasks, move them between review and ready,
+create new ones and delete them.
 
-First, run the development server:
+The app itself is deliberately modest. Its purpose is to show **how** I build
+interfaces. The site describes my way of working; this repository is that
+method applied to real, running code, so it can be read and checked rather
+than taken on trust.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## The method
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Composition.** Small components with one job each. State and behaviour
+  live in hooks and plain functions; components describe what you see.
+- **Boundaries.** Code is organised by feature. Each part of the app keeps its
+  components, hooks and tests together and exposes a single public entry
+  point. These boundaries are enforced by tooling, not left to discipline.
+- **Performance.** Server-rendered by default, with client code only where
+  someone interacts. The React Compiler handles memoization, and the pages are
+  prerendered.
+- **Testing.** Tests describe what a person needs to get done, using the page
+  the way they would: by role and by label, not by implementation details.
+- **Accessibility.** WCAG 2.2 AA from the start: semantic HTML first, ARIA only
+  where HTML falls short, visible focus, full keyboard support, and automated
+  checks in both colour themes.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## About the data
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Everything is fictional and lives in memory: there is no backend, no account
+and no tracking. Reloading the page restores the sample tasks.
 
-## Learn More
+## Built with
 
-To learn more about Next.js, take a look at the following resources:
+Next.js (App Router), React 19 with the React Compiler, TypeScript, Tailwind CSS
+and Zod. Tested with Vitest, Testing Library, Playwright and axe.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Made by Fabio Piras · [fabiopiras.dev](https://fabiopiras.dev)
