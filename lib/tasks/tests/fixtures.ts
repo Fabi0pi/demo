@@ -1,4 +1,4 @@
-import type { Task } from "./task";
+import type { Task } from "../task";
 
 /** A minimal valid task; tests override only what they care about. */
 export function makeTask(overrides: Partial<Task> = {}): Task {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { getReadiness } from "./readiness";
-import { makeTask } from "./test-fixtures";
+import { getReadiness } from "../readiness";
+import { makeTask } from "./fixtures";
 
 describe("getReadiness", () => {
   it("counts ready and in-review tasks and rounds the percentage", () => {

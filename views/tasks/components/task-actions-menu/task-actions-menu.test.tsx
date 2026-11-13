@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import { makeTask } from "@/lib/tasks/test-fixtures";
+import { makeTask } from "@/lib/tasks/tests/fixtures";
 import { TaskActionsMenu } from ".";
 
 function renderMenu() {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { filterTasks } from "./filter-tasks";
-import { makeTask } from "./test-fixtures";
+import { filterTasks } from "../filter-tasks";
+import { makeTask } from "./fixtures";
 
 const tasks = [
   makeTask({ id: "checkout", title: "Checkout forms", area: "Commerce", status: "review" }),

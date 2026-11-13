@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { buildTask, createDeskState, deskReducer, hasChanges } from "./desk-state";
-import { makeTask } from "./test-fixtures";
+import { buildTask, createDeskState, deskReducer, hasChanges } from "../desk-state";
+import { makeTask } from "./fixtures";
 
 const initial = [makeTask({ id: "a", title: "Alpha" }), makeTask({ id: "b", title: "Beta", status: "ready" })];
 
