@@ -23,7 +23,7 @@ export function SearchField({ query, onQueryChange }: SearchFieldProps) {
           value={query}
           onChange={(event) => onQueryChange(event.target.value)}
           placeholder="Search the release…"
-          className="min-w-0 flex-1 bg-transparent px-3 py-2 text-sm outline-none placeholder:text-muted-foreground focus-visible:outline-none"
+          className="min-w-0 flex-1 bg-transparent px-3 py-2 text-sm outline-none placeholder:text-muted-foreground focus-visible:outline-none [&::-webkit-search-cancel-button]:appearance-none"
         />
         {query && (
           <button
