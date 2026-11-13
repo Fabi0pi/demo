@@ -1,15 +1,11 @@
-import { Icon } from "@/components/ui/icon";
-import type { ActivityEntry } from "@/lib/tasks/desk-state";
-import { describeEntry } from "../../utils/describe-entry";
+import type { ActivityItem as ActivityItemData } from "../../types";
+import { ActivityItem } from "./components/activity-item";
 
-export function ActivityList({ entries }: { entries: readonly ActivityEntry[] }) {
+export function ActivityList({ items }: { items: readonly ActivityItemData[] }) {
   return (
     <ol className="grid gap-2">
-      {entries.map((entry) => (
-        <li key={entry.id} className="flex gap-3 rounded-sm border border-border bg-surface p-3 text-sm break-words">
-          <Icon name="check" className="mt-0.5 size-4 text-highlight" />
-          <span>{describeEntry(entry)}</span>
-        </li>
+      {items.map(({ id, text }) => (
+        <ActivityItem key={id} text={text} />
       ))}
     </ol>
   );
